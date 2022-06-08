@@ -1,11 +1,21 @@
 const express = require('express')
+/*uses:
+1.Creating a server => listen with the port no
+2.Routing of API =
+3.Configuring Middlewares => .use => body-parser,morgan,router
+*/
 const logger = require('morgan')
+
 const bodyParser = require('body-parser')
 const app = express()
 const userRoute = require('./app/api/routes/users')
 const movieRoute = require('./app/api/routes/movies')
 const mongoose = require('mongoose')
 const jwt = require('jsonwebtoken')
+/*
+uses:
+1.Verify
+*/
 app.set('secretKey','hdjsakfhdjsk')
 const userValidation = (req, res,next) => {
     jwt.verify(req.headers['x-access-token'], req.app.get('secretKey'), 
